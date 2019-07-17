@@ -2,11 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import NotFoundPage from 'src/containers/NotFoundPage/index';
-import App from './containers/App/index';
+import App from 'src/containers/App';
 
 const initialState = ['koto', 'na'];
+const MOUNT_NODE = document.getElementById('root');
 
 function playList(state = initialState, action) {
   if (action.type === 'ADD_TRACK') {
@@ -20,13 +19,7 @@ const store = createStore(playList);
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={App} />
-        {/*<Route path="/(:filter)" component={App} />*/}
-        <Route component={NotFoundPage} />
-      </Switch>
-    </BrowserRouter>
+    <App />
   </Provider>,
-  document.getElementById('root')
+  MOUNT_NODE
 );
