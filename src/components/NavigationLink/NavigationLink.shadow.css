@@ -1,0 +1,8 @@
+li {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+li[|color='white'] {
+    background-color: white;
+}
